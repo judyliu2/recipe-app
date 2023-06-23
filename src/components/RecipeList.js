@@ -1,0 +1,123 @@
+import React, { useState } from "react";
+import RecipeCard from "./RecipeCard";
+import "./Recipe.css";
+
+function RecipeList() {
+  const recipes = [
+    {
+      id: 0,
+      name: "Roasted Broccoli",
+      category: ["snack", "lunch", "dinner"],
+      servings: 2,
+      difficulty: 1,
+      ingredients: ["broccoli", "salt", "pepper", "oil", "garlic"],
+      instructions: [
+        "Cut br into florets and wash florets",
+        "Dry florets",
+        "Spread some oil on baking sheet/parchment paper on baking tray",
+        "Place florets on oiled sheet and season with salt and pepper and minced garlic and mix well",
+        "Bake for 10-13 min",
+      ],
+    },
+    {
+      id: 1,
+      name: "Hojicha Overnight Oats",
+      category: ["snack", "breakfast"],
+      servings: 1,
+      difficulty: 1,
+      ingredients: [
+        "milk (any type of milk)",
+        "oats",
+        "chia seeds",
+        "honey",
+        "hojicha",
+      ],
+      instructions: [
+        "Place dry ingredients (hojicha, chia seeds, oats) into overnight oats container",
+        "Add milk to container until its almost full",
+        "Add honey and mix to prefered taste",
+      ],
+    },
+    {
+      id: 2,
+      name: "Hojicha Chocochip Cookie",
+      category: ["snack"],
+      servings: "8",
+      difficulty: "2",
+      ingredients: [
+        "4/3 cup all purpose flour",
+        "1/2 tsp baking powder",
+        "1/2 tsp baking soda",
+        "pinch of salt",
+        "2 tbsp hojicha",
+        "1/3 cup granulated sugar (can pt less if prefer less sweet)",
+        "2/3 cup brown sugar",
+        "A little less than 1/2 cup of neutral oil or butter",
+        "1 tsp vanilla",
+        "as much baking chocolate you think you need",
+      ],
+      instructions: [
+        "Mix flour, baking powder, baking soda, salt in medium bowl",
+        "Mix granulated sugar, brown sugar, hojicha in large bowl",
+        "Add oil (or butter), vanilla to same large bowl and mix",
+        "Slowly mix in dry stuff (1/3-1/2 of it at a time)",
+        "Chop chocolate to preferred size and fold in prefered amount of chocolate",
+        "Place batter fridge to cool for at least 1hr (can be overnight)",
+        "Scoop out cookies and place scoops ~2in apart (dough should be ball shaped)",
+        " If scoops are 2 inches in diameter bake ~12 min, if smaller 8-10min",
+      ],
+    },
+    {
+      id: 3,
+      name: "Hojicha Overnight Oats",
+      category: ["snack", "breakfast"],
+      servings: 1,
+      difficulty: 1,
+      ingredients: [
+        "milk (any type of milk)",
+        "oats",
+        "chia seeds",
+        "honey",
+        "hojicha",
+      ],
+      instructions: [
+        "Place dry ingredients (hojicha, chia seeds, oats) into overnight oats container",
+        "Add milk to container until its almost full",
+        "Add honey and mix to prefered taste",
+      ],
+    },
+    {
+      id: 4,
+      name: "Hojicha Overnight Oats",
+      category: ["snack", "breakfast"],
+      servings: 1,
+      difficulty: 1,
+      ingredients: [
+        "milk (any type of milk)",
+        "oats",
+        "chia seeds",
+        "honey",
+        "hojicha",
+      ],
+      instructions: [
+        "Place dry ingredients (hojicha, chia seeds, oats) into overnight oats container",
+        "Add milk to container until its almost full",
+        "Add honey and mix to prefered taste",
+      ],
+    },
+  ];
+
+  return (
+    <div className="recipe-page">
+      <h1> Recipes </h1>
+      <input type="text" placeholder="Search..."></input>
+      <div className="recipe-list">
+        {recipes.map((data) => {
+          return <RecipeCard data={data} />;
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default RecipeList;
