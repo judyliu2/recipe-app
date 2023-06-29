@@ -1,19 +1,20 @@
 .recipe-list {
   display: grid;
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   list-style: none;
   justify-content: center;
 }
 
 .recipe-card {
+  display: flex;
   aspect-ratio: 1;
   margin: 0.6rem;
   padding: 1rem;
-  border-radius: 10px;
-  /* height: 100%; */
-  background-color: rgb(176, 219, 133);
-  align-items: center;
+  border-radius: 8px;
+  background-color: rgb(65, 71, 58);
+  color: white;
+  /* align-items: center; */
   justify-content: center;
 }
 
@@ -23,13 +24,17 @@
   transition: ease-out 0.5s;
 }
 
+.card-header {
+  padding-top: 1rem;
+}
+
 .recipe-info-modal {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,38 +42,78 @@
   height: 100%;
   opacity: 0;
   transition: all 1s ease-in-out;
-  /* pointer-events: none; */
+  color: black;
 }
 
 .recipe-info-modal.open {
   opacity: 1;
-  /* pointer-events: visible; */
 }
 
 .modal-content {
   width: 80%;
   background-color: rgb(255, 255, 255);
-  transform: translateY(-200px);
-  transition: all 1s ease-in-out;
+  border-radius: 5px;
 }
 
-.recipe-info-modal.open .modal-content {
-  transform: translateY(0);
-}
-
-.modal-heaader,
+.modal-header,
 .modal-footer {
-  padding: 10px;
+  padding: 15px;
 }
 
 .modal-title {
   margin: 0px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.modal-subtitle {
+  margin: 0px;
+  font-size: 1.1rem;
+  font-weight: 550;
 }
 
 .modal-body {
+  padding: 2rem;
+  /* border-top: 1px solid rgb(210, 226, 193);
+  border-bottom: 1px solid rgb(210, 226, 193); */
+  text-align: left;
+}
+
+.button {
+  background-color: rgb(215, 230, 199);
+  border: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px;
+}
+
+.search-bar {
+  border: none;
+  height: 2rem;
+  width: 30%;
+  font-size: 1.25rem;
+  outline: none;
+}
+
+.search-bar:focus {
+  background-color: rgb(231, 247, 214);
+  border-radius: 3px;
+  padding-left: 0.3rem;
+}
+
+.filter-bar {
   padding: 10px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+}
+
+.difficulty-selector {
+  border: none;
+  background-color: rgb(231, 247, 214);
+  font-size: 1rem;
+}
+
+.no-results {
+  font-size: 1.75rem;
 }
 
 @media screen and (max-width: 850px) {

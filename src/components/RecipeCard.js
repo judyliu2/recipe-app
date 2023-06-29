@@ -12,17 +12,15 @@ function RecipeCard({ data }) {
         id={data.id}
         onClick={() => setOpen(!opened)}
       >
-        <div className="card-header">
-          <h3>{data.name}</h3>
-        </div>
-        {opened && (
-          <RecipeInfo
-            data={data}
-            onClose={() => setOpen(false)}
-            opened={opened}
-          />
-        )}
+        <div className="card-header">{data.name}</div>
       </div>
+      {opened && (
+        <RecipeInfo
+          data={data}
+          onClose={() => setOpen(false)}
+          opened={opened}
+        />
+      )}
     </div>
   );
 }

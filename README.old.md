@@ -1,2 +1,5 @@
 # recipe-app
-Project for improvin React skills
+
+Project for improving React skills
+
+Users search and open recipes.

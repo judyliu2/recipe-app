@@ -10,16 +10,16 @@ function RecipeInfo({ data, onClose, opened }) {
     >
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h3 className="modal-title">{data.name}</h3>
+          <div className="modal-title">{data.name}</div>
         </div>
         <div className="modal-body">
-          <h4>Ingredients</h4>
+          <div className="modal-subtitle">Ingredients</div>
           <ol>
             {data.ingredients.map((ingredient) => {
               return <li>{ingredient}</li>;
             })}
           </ol>
-          <h4>Instructions</h4>
+          <div className="modal-subtitle">Instructions</div>
           <ol>
             {data.instructions.map((instruction) => {
               return <li>{instruction}</li>;

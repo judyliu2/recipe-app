@@ -3,13 +3,15 @@ import RecipeCard from "./RecipeCard";
 import "./Recipe.css";
 
 function RecipeList() {
+  const [searchWord, setSearchWord] = useState("");
+  const [difficulty, setDifficulty] = useState("");
   const recipes = [
     {
       id: 0,
       name: "Roasted Broccoli",
       category: ["snack", "lunch", "dinner"],
       servings: 2,
-      difficulty: 1,
+      difficulty: "easy",
       ingredients: ["broccoli", "salt", "pepper", "oil", "garlic"],
       instructions: [
         "Cut br into florets and wash florets",
@@ -24,7 +26,7 @@ function RecipeList() {
       name: "Hojicha Overnight Oats",
       category: ["snack", "breakfast"],
       servings: 1,
-      difficulty: 1,
+      difficulty: "easy",
       ingredients: [
         "milk (any type of milk)",
         "oats",
@@ -43,7 +45,7 @@ function RecipeList() {
       name: "Hojicha Chocochip Cookie",
       category: ["snack"],
       servings: "8",
-      difficulty: "2",
+      difficulty: "intermediate",
       ingredients: [
         "4/3 cup all purpose flour",
         "1/2 tsp baking powder",
@@ -72,7 +74,7 @@ function RecipeList() {
       name: "Hojicha Overnight Oats",
       category: ["snack", "breakfast"],
       servings: 1,
-      difficulty: 1,
+      difficulty: "easy",
       ingredients: [
         "milk (any type of milk)",
         "oats",
@@ -91,7 +93,7 @@ function RecipeList() {
       name: "Hojicha Overnight Oats",
       category: ["snack", "breakfast"],
       servings: 1,
-      difficulty: 1,
+      difficulty: "easy",
       ingredients: [
         "milk (any type of milk)",
         "oats",
@@ -107,15 +109,62 @@ function RecipeList() {
     },
   ];
 
+  const handleEnterSearch = (e) => {
+    if (e.key === "Enter") {
+      setSearchWord(e.target.value.toString().toLowerCase());
+    }
+  };
+
+  const handleDifficultyFilter = (e) => {
+    setDifficulty(e.target.value);
+  };
+
+  const filteredRecipes = recipes
+    .filter((recipe) => {
+      if (searchWord !== "") {
+        return recipe.name.toString().toLowerCase().includes(searchWord);
+      }
+      return true;
+    })
+    .filter((recipe) => {
+      if (difficulty !== "") {
+        return recipe.difficulty === difficulty;
+      }
+      return true;
+    });
+
   return (
     <div className="recipe-page">
       <h1> Recipes </h1>
-      <input type="text" placeholder="Search..."></input>
-      <div className="recipe-list">
-        {recipes.map((data) => {
-          return <RecipeCard data={data} />;
-        })}
+      <input
+        type="text"
+        placeholder="Search..."
+        className="search-bar"
+        onKeyDown={(e) => handleEnterSearch(e)}
+      ></input>
+      <div className="filter-bar">
+        Difficulty:{" "}
+        <select
+          className="difficulty-selector"
+          onChange={(e) => handleDifficultyFilter(e)}
+        >
+          <option value="" selected="selected">
+            None
+          </option>
+          <option value="easy">Easy</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="hard">Hard</option>
+        </select>
       </div>
+      {filteredRecipes.length > 0 ? (
+        <div className="recipe-list">
+          {filteredRecipes.map((data) => {
+            return <RecipeCard data={data} />;
+          })}
+        </div>
+      ) : (
+        <span className="no-results">No results found.</span>
+      )}
     </div>
   );
 }
