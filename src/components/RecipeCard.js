@@ -2,21 +2,19 @@ import { useState } from "react";
 import "./Recipe.css";
 import RecipeInfo from "./RecipeInfo";
 
-function RecipeCard({ data }) {
+function RecipeCard(props) {
   const [opened, setOpen] = useState(false);
 
   return (
-    <div>
-      <div
-        className="recipe-card"
-        id={data.id}
-        onClick={() => setOpen(!opened)}
-      >
-        <div className="card-header">{data.name}</div>
+    <div className="recipe-data">
+      <div className="recipe-card" onClick={() => setOpen(!opened)}>
+        <div className="card-header">{props.recipeData.name}</div>
       </div>
       {opened && (
         <RecipeInfo
-          data={data}
+          recipeData={props.recipeData}
+          updateRecipe={props.updateRecipe}
+          deleteRecipe={props.deleteRecipe}
           onClose={() => setOpen(false)}
           opened={opened}
         />

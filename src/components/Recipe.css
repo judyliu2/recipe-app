@@ -1,7 +1,7 @@
 .recipe-list {
   display: grid;
   padding: 0 1rem 1rem 1rem;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 20%));
   list-style: none;
   justify-content: center;
 }
@@ -14,26 +14,22 @@
   border-radius: 8px;
   background-color: rgb(65, 71, 58);
   color: white;
-  /* align-items: center; */
   justify-content: center;
+  align-items: center;
 }
 
+.add-button {
+  font-size: 3rem;
+}
 .recipe-card:hover {
   margin: 0.2rem;
-  /* box-shadow: 2px 2px 2px 1px rgba(83, 83, 83, 0.726); */
   transition: ease-out 0.5s;
-}
-
-.card-header {
-  padding-top: 1rem;
 }
 
 .recipe-info-modal {
   position: fixed;
+  top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
@@ -43,6 +39,7 @@
   opacity: 0;
   transition: all 1s ease-in-out;
   color: black;
+  overflow-y: scroll;
 }
 
 .recipe-info-modal.open {
@@ -50,20 +47,31 @@
 }
 
 .modal-content {
-  width: 80%;
+  position: relative;
+  width: 70%;
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
+  max-height: 90%;
+  overflow: auto;
 }
 
 .modal-header,
 .modal-footer {
-  padding: 15px;
+  padding: 1.5rem;
+}
+
+.modal-header {
+  display: grid;
 }
 
 .modal-title {
   margin: 0px;
   font-size: 1.3rem;
   font-weight: 600;
+}
+
+.delete-button {
+  justify-self: right;
 }
 
 .modal-subtitle {
@@ -74,8 +82,6 @@
 
 .modal-body {
   padding: 2rem;
-  /* border-top: 1px solid rgb(210, 226, 193);
-  border-bottom: 1px solid rgb(210, 226, 193); */
   text-align: left;
 }
 
@@ -116,8 +122,33 @@
   font-size: 1.75rem;
 }
 
-@media screen and (max-width: 850px) {
+.display-linebreak {
+  white-space: pre-wrap;
+}
+
+.text-body {
+  width: 100%;
+  height: 10rem;
+}
+
+.button {
+  margin: 0.5rem;
+}
+
+.edit-button {
+  border: none;
+  background-color: rgba(54, 127, 129, 0);
+}
+
+.difficulty-tag {
+  background-color: rgb(231, 247, 214);
+  font-weight: 300;
+  border-radius: 5px;
+  padding: 0.25rem;
+}
+
+/* @media screen and (max-width: 850px) {
   .recipe-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-}
+} */
